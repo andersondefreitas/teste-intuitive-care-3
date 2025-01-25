@@ -1,0 +1,16 @@
+SELECT 
+    reg_ans AS operadora,
+    SUM(
+        CAST(NULLIF(vl_saldo_inicial, '') AS NUMERIC) -
+        CAST(NULLIF(vl_saldo_final, '') AS NUMERIC)
+    ) AS total_despesas
+FROM dados_2023
+WHERE descricao = 'EVENTOS/ SINISTROS CONHECIDOS OU AVISADOS  DE ASSISTÊNCIA A SAÚDE MEDICO HOSPITALAR '
+GROUP BY reg_ans
+ORDER BY total_despesas DESC
+LIMIT 10;
+
+select * from dados_2023
+
+
+where max(year(DATA) 
